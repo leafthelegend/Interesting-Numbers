@@ -1,4 +1,4 @@
-from interests import *
+from interesting_numbers.interests import *
 class NumberFinder:
     def __init__(self, checks, base_dependent_checks, base_range = range(2,38)):
         self.checks = checks

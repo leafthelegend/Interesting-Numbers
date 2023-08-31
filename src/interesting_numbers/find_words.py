@@ -1,4 +1,4 @@
-from interests import is_word, WORDS
+from interesting_numbers.interests import is_word, WORDS
 def find_words(n):
     results = []
     for b in range(2,10000):

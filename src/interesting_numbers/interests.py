@@ -1,8 +1,9 @@
-from interesting_number import InterestingNumber
+from interesting_numbers.interesting_number import InterestingNumber
 import math
 import sympy
 from itertools import product
 import json
+import os
 
 #TODO: vampire numbers, search for numbers which make english words
 
@@ -62,8 +63,11 @@ def get_divisors(number):
 #         words = json.load(file)
 #     return words
 
+
+PROJECT_DIR = os.path.dirname(__file__)
+
 def load_words(): #load from words_10k.txt, one line per word
-    with open("words_10k.txt", "r") as file:
+    with open(os.path.join(PROJECT_DIR, 'words_10k.txt'), "r") as file:
         words = file.read().splitlines()
     return words
 
