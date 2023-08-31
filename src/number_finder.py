@@ -22,4 +22,5 @@ class NumberFinder:
                     return result
         return None
     
-finder = NumberFinder([is_square, is_cube, is_triangular, is_fibonacci, is_power_of_two], [is_palindrome, is_repdigit, is_consecutive])
+# example finder:
+# finder = NumberFinder([is_square, is_cube, is_triangular, is_fibonacci, is_power_of_two], [is_repdigit, is_consecutive, is_palindrome])

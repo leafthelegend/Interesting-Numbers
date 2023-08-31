@@ -2,8 +2,9 @@ from interesting_number import InterestingNumber
 import math
 import sympy
 from itertools import product
+import json
 
-#TODO: vampire numbers
+#TODO: vampire numbers, search for numbers which make english words
 
 #some utility functions
 
@@ -56,6 +57,17 @@ def get_divisors(number):
         divisors.append(divisor)
     return divisors
 
+# def load_words():
+#     with open("words_dictionary.json", "r") as file:
+#         words = json.load(file)
+#     return words
+
+def load_words(): #load from words_10k.txt, one line per word
+    with open("words_10k.txt", "r") as file:
+        words = file.read().splitlines()
+    return words
+
+WORDS = load_words()
 
 # a set of functions to determine whether a number has some interesting property. If so, it returns an appropriate InterestingNumber object.
 
@@ -130,5 +142,17 @@ def is_perfect(number):
     divisors = get_divisors(number)
     if sum(divisors) == 2*number:
         return InterestingNumber(number, f"{number} (perfect number)", "perfect")
+    else:
+        return None
+    
+def is_word(number, base):
+    digits = number_to_base(number, base)
+    #check if any digits are above 36
+    if max(digits) > 36:
+        return None
+    digit_string = digits_to_string(digits)
+    word = digit_string.lower().replace("0","o").replace("1","i").replace("5","s")
+    if word in WORDS:
+        return InterestingNumber(number, f"{digit_string} (base {base})", f"{word}", base)
     else:
         return None
